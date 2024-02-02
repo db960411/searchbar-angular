@@ -1,0 +1,17 @@
+<div class="card">
+    <ng-container *ngIf="cardData">
+        <a [routerLink]="['/search-results', cardData.id]">
+            {{cardData.name}}
+        </a>
+        <p *ngIf="cardData.brewery_type" class="sub-info">{{cardData.brewery_type | titlecase}}</p>
+        <div class="sub-info">
+            <span *ngIf="cardData.country" class="card-text">{{cardData.country | titlecase}},</span>
+            <span *ngIf="cardData.city" class="card-text">{{cardData.city | titlecase}},</span>
+            <span *ngIf="cardData.address_1" class="card-text">{{cardData.address_1 | titlecase}}</span>
+        </div>
+        <a *ngIf="cardData.phone" href="tel:{{cardData.phone}}">
+            <span *ngIf="cardData.phone" class="card-text">
+                {{cardData.phone | titlecase}}</span>
+        </a>
+    </ng-container>
+</div>

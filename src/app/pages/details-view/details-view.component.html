@@ -1,0 +1,69 @@
+<section class="sm-container">
+    <ng-container *ngIf="loading$ | async">
+        <app-spinner></app-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!(loading$ | async)"></ng-container>
+    <div *ngIf="detailsData$ | async as item">
+        <button (click)="goBack()">Go back</button>
+        <div class="details-view-container">
+            <h1>{{item.name}}</h1>
+
+            <ng-container *ngIf="item.description">
+                <p>{{ item.description }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="item.brewery_type">
+                <p>{{ item.brewery_type | titlecase }} </p>
+            </ng-container>
+
+            <div class="address-container">
+                <ng-container *ngIf="item.address_1">
+                    <p>Address 1: {{ item.address_1 }}</p>
+                </ng-container>
+
+                <ng-container *ngIf="item.address_2">
+                    <p>Address 2: {{ item.address_2 }}</p>
+                </ng-container>
+
+                <ng-container *ngIf="item.address_3">
+                    <p>Address 3: {{ item.address_3 }}</p>
+                </ng-container>
+
+                <ng-container *ngIf="item.city || item.state_province || item.postal_code || item.country">
+                    <p>
+                        {{ item.city }}{{ item.city ? ', ' : '' }}
+                        {{ item.state_province }}{{ item.state_province ? ', ' : '' }}
+                        {{ item.postal_code }}{{ item.postal_code ? ', ' : '' }}
+                        {{ item.country }}
+                    </p>
+                </ng-container>
+            </div>
+
+            <ng-container *ngIf="item.phone">
+                <p>Phone: <a href="tel:{{ item.phone }}" class="url-link">{{ item.phone }}</a></p>
+            </ng-container>
+
+            <ng-container *ngIf="item.website_url">
+                <p>Website: <a target="_blank" href="{{ item.website_url }}" class="url-link">{{ item.website_url
+                        }}</a></p>
+            </ng-container>
+
+            <ng-container *ngIf="item.state">
+                <p>State: {{ item.state }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="item.street">
+                <p>Street: {{ item.street }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="item.longitude || item.latitude">
+                <p>Coordinates: {{ item.latitude }}, {{ item.longitude }}</p>
+            </ng-container>
+        </div>
+    </div>
+
+    <ng-template #noResults>
+        <p>No results...</p>
+    </ng-template>
+</section>

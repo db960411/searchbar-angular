@@ -1,0 +1,48 @@
+.details-view-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+
+    h1 {
+        font-size: 24px;
+        color: #333;
+        margin-top: 0;
+    }
+
+    p {
+        display: block;
+        margin-bottom: 8px;
+        color: #666;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .url-link {
+        color: #333;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+button {
+    background-color: transparent;
+    padding: 6px 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}

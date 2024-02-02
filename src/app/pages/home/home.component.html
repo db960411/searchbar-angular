@@ -1,0 +1,8 @@
+<section class="sm-container">
+    <h1>Lager Locator Labs</h1>
+    <p *ngIf="error">Something went wrong.</p>
+    <app-search (searchQueryChange)="onSubmit($event)" [searchForm]="searchForm"></app-search>
+    <app-result-display *ngIf="searchForm.valid && !error && !(submitted$ | async)"></app-result-display>
+    <app-result-list *ngIf="submitted$ | async"></app-result-list>
+
+</section>

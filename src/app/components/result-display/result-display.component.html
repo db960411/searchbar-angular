@@ -1,0 +1,18 @@
+<ng-container *ngIf="(loading$ | async); else showResults">
+    <app-spinner></app-spinner>
+</ng-container>
+
+<ng-template #showResults>
+    <section class="search-display-container">
+        <ng-container *ngIf="searchResults$ | async as results; else noResults">
+            <div *ngIf="results; else noResults">
+                <div *ngFor="let item of results;">
+                    <app-detailed-card [cardData]="item"></app-detailed-card>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #noResults>
+            <p class="action-text">No results</p>
+        </ng-template>
+    </section>
+</ng-template>

@@ -1,0 +1,34 @@
+<section class="details-view">
+    <ng-container *ngIf="loading$ | async">
+        <app-spinner></app-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!(loading$ | async)">
+        <div *ngIf="searchQueryResults$ | async as searchQueryResults;">
+            <ng-container *ngIf="searchQueryResults.length; else noResults">
+                <ul class="search-results">
+                    <li *ngFor="let item of searchQueryResults" class="search-item">
+                        <a [routerLink]="['/search-results', item.id]">
+                            {{item.name}}
+                        </a>
+                        <p *ngIf="item.brewery_type" class="sub-info">{{item.brewery_type | titlecase}}</p>
+                        <div>
+                            <span *ngIf="item.country" class="card-text">{{item.country | titlecase}}</span>
+                            <span *ngIf="item.city" class="card-text">{{item.city | titlecase}}</span>
+                            <span *ngIf="item.address_1" class="card-text">{{item.address_1 | titlecase}}</span>
+                        </div>
+                        <a *ngIf="item.phone" href="tel:{{item.phone}}">
+                            <span *ngIf="item.phone" class="card-text">{{item.phone | titlecase}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </ng-container>
+
+            <ng-template #noResults>
+                <p>No results...</p>
+            </ng-template>
+        </div>
+    </ng-container>
+
+
+</section>

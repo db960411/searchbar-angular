@@ -1,0 +1,7 @@
+<div class="search-container">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <input type="text" id="searchQuery" name="searchQuery" required formControlName="searchQuery" />
+        <button type="submit" class="btn-submit">Search</button>
+        <p *ngIf="error">Something went wrong.</p>
+    </form>
+</div>

@@ -1,0 +1,32 @@
+.card {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    padding: 8px;
+
+    &:nth-child(n+2) {
+        margin: 5px 0;
+    }
+
+    &:nth-last-child {
+        border-bottom: none;
+    }
+
+    .sub-info {
+        font-size: 11px;
+        margin: 0;
+        margin-top: 3px;
+    }
+
+    a {
+        color: #333;
+    }
+}
+
+.card-text {
+    font-size: 11px;
+    margin: 0.5px;
+
+    &:nth-child(n+2) {
+        margin-left: 3px;
+    }
+}
